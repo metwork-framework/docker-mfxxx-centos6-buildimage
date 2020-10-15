@@ -43,6 +43,7 @@ pipeline:
     when:
       event: push
 
+
   trigger:
     <<: *trigger_common
     repositories:
@@ -69,6 +70,7 @@ pipeline:
       status: success
       event: push
       branches: [ master ]
+  
 
 
 branches: [ master, integration, experimental*, release_* ]

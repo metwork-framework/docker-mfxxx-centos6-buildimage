@@ -49,7 +49,7 @@ pipeline:
     when:
       status: success
       event: push
-      branches: [ integration, experimental*, release_* ]
+      branch: [ integration, experimental*, release_* ]
 
   trigger_master:
     <<: *trigger_common
@@ -63,7 +63,7 @@ pipeline:
     when:
       status: success
       event: push
-      branches: [ master ]
+      branch: [ master ]
   
 
 

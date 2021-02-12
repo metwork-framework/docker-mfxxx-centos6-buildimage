@@ -6,12 +6,7 @@
     
 
 
-trigger_common: &trigger_common
-  image: metwork/drone-downstream-specific-image:latest
-  pull: true
-  secrets: [ downstream_token, downstream_server ]
-  params:
-    - FORCED_OS_VERSION=centos6
+
 
 
 
@@ -37,22 +32,10 @@ pipeline:
     when:
       event: push
 
-
-  trigger:
-    <<: *trigger_common
-    repositories:
-      - metwork-framework/mfserv@${DRONE_BRANCH}
-      - metwork-framework/mfdata@${DRONE_BRANCH}
-      - metwork-framework/mfbase@${DRONE_BRANCH}
-      - metwork-framework/mfadmin@${DRONE_BRANCH}
-      - metwork-framework/mfsysmon@${DRONE_BRANCH}
-    when:
-      status: success
-      event: push
-      branch: [ integration, experimental*, release_* ]
-
-  trigger_master:
-    <<: *trigger_common
+  
+    
+  repository_dispatch:
+    image: metwork/drone-repository-dispatch-specific-image:latest
     repositories:
       - metwork-framework/mfserv@${DRONE_BRANCH}
       - metwork-framework/mfdata@${DRONE_BRANCH}
@@ -60,10 +43,26 @@ pipeline:
       - metwork-framework/mfadmin@${DRONE_BRANCH}
       - metwork-framework/mfsysmon@${DRONE_BRANCH}
       - metwork-framework/mfextaddons@${DRONE_BRANCH}
+    secrets: [ downstream_github_token ]
+    when:
+      status: success
+      event: push
+      branch: [ integration, experimental*, release_* ]
+
+  repository_dispatch_master:
+    image: metwork/drone-repository-dispatch-specific-image:latest
+    repositories:
+      - metwork-framework/mfserv@${DRONE_BRANCH}
+      - metwork-framework/mfdata@${DRONE_BRANCH}
+      - metwork-framework/mfbase@${DRONE_BRANCH}
+      - metwork-framework/mfadmin@${DRONE_BRANCH}
+      - metwork-framework/mfsysmon@${DRONE_BRANCH}
+    secrets: [ downstream_github_token ]
     when:
       status: success
       event: push
       branch: [ master ]
+    
   
 
 

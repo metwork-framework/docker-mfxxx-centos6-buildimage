@@ -50,7 +50,7 @@ jobs:
 
 
       - name: dispatch mfserv
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfdata
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -66,7 +66,7 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfbase
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfadmin
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -82,7 +82,7 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfsysmon
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -90,7 +90,7 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfextaddon_python2
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
@@ -98,14 +98,12 @@ jobs:
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
       - name: dispatch mfextaddon_rabbitmq
-        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' }}
+        if: ${{ github.event_name != 'pull_request' && steps.SetVariables.outputs.branch != 'null' && steps.DockerStep.outputs.dispatch_bypass == 'false' && steps.SetVariables.outputs.os == 'centos6' }}
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.METWORK_ACCESS_TOKEN }}
           repository: metwork-framework/mfextaddon_rabbitmq
           event-type: metwork-trigger-${{ steps.SetVariables.outputs.branch }}
           client-payload: '{"branch": "${{ steps.SetVariables.outputs.branch }}", "os": "centos6"}'
-
-
 
 

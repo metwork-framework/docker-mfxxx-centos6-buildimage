@@ -35,5 +35,6 @@ fi
 
 
 echo "::set-output name=branch::${BRANCH}"
+echo "::set-output name=os::centos6"
 echo "::set-output name=tag_branch::${TAG_BRANCH}"
 echo "::set-output name=tag_latest::${TAG_LATEST}"
